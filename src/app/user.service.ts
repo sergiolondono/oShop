@@ -1,5 +1,7 @@
+import { Observable } from 'rxjs/Observable';
+import { AppUser } from './models/app-user';
 import { Injectable } from '@angular/core';
-import { AngularFireDatabase } from 'angularfire2/database';
+import { AngularFireDatabase, AngularFireObject } from 'angularfire2/database';
 import * as firebase from 'firebase';
 
 @Injectable({
@@ -15,4 +17,13 @@ export class UserService {
       email: user.email
     });
   }
+
+  // get(uid: string): Observable<any>{
+  //   return this.db.object('/users/' + uid).valueChanges();
+  // }
+
+  get(uid: string): AngularFireObject<AppUser>{
+    return this.db.object('/users/' + uid);
+  }
+
 }
