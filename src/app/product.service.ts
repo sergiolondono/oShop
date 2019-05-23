@@ -22,20 +22,16 @@ export class ProductService {
   }    
 
   get(productId){
-     //return this.db.list('/products/' + productId).valueChanges();
-    //  return this.db.object('products/-LfUrhkJpj-YKfZaPLYe').snapshotChanges()
-    // .pipe(map(res => res.payload.val())
-    // );
-
-    // return this.db.object('products/'+productId)
-    // .snapshotChanges().map(res => {
-    //     return res.payload.val();
-    // });
-
     return this.db.object('/products/' + productId)
     .snapshotChanges()
     .pipe(map(res => res.payload.val()));
-    
-    //return this.db.object('/products/' + productId).valueChanges();
+  }
+
+  update(productId, product){
+    return this.db.object('/products/' + productId).update(product);
+  }
+
+  delete(productId){
+    return this.db.object('/products/' + productId).remove();
   }
 }
