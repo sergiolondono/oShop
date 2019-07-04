@@ -1,5 +1,4 @@
 import { ActivatedRoute } from "@angular/router";
-import { CategoryService } from "./../category.service";
 import { ProductService } from "./../product.service";
 import { Component } from "@angular/core";
 import 'rxjs/add/operator/switchMap';
@@ -12,13 +11,11 @@ import 'rxjs/add/operator/switchMap';
 export class ProductsComponent {
   products: any[] = [];
   filteredProducts: any[] = [];
-  categories$;
   category: string;
 
   constructor(
     route: ActivatedRoute,
-    productService: ProductService,
-    categoryService: CategoryService
+    productService: ProductService    
   ) {
 
     // productService
@@ -48,9 +45,5 @@ export class ProductsComponent {
           ? this.products.filter(p => p.category === this.category)
           : this.products;
       });
-
-
-    this.categories$ = categoryService.getAll();
-
   }
 }
