@@ -3,6 +3,7 @@ import { Injectable } from "@angular/core";
 import { Product } from "./models/product";
 import { take, map } from "rxjs/operators";
 import { Observable } from "rxjs";
+import { ShoppingCart } from './models/shopping-cart';
 
 @Injectable({
   providedIn: "root"
