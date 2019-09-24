@@ -59,6 +59,20 @@ export class ShoppingCartService {
       });
   }
 
+  totalPrice(cart){
+    let sum = 0;
+    for (let item in cart) {
+      if (cart[item].key === "items") {
+        for (let i in cart[item]) { 
+          if (cart[item][i].product != undefined){
+            sum += cart[item][i].product.price * cart[item][i].quantity;
+          }          
+        }
+      }
+    }
+    return sum;
+  }
+
   totalItemsCount(cart){
     this.shoppingCartItemCount = 0;
 

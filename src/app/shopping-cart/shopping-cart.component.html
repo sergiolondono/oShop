@@ -10,7 +10,8 @@
       <tr>
         <th>Product</th>
         <th>Quantity</th>
-        <th></th>
+        <th>Unit Price</th>
+        <th>Price</th>
       </tr>
     </thead>
     <tbody>
@@ -18,8 +19,18 @@
         <ng-container *ngIf="product != 'key'">
             <td>{{ products[product].product.title }}</td>
             <td>{{ products[product].quantity }}</td>
+            <td>{{ products[product].product.price | currency:'USD' }}</td>
+            <td>{{ products[product].quantity * products[product].product.price | currency:'USD' }}</td>
         </ng-container>        
       </tr>
     </tbody>
+    <tfoot>
+      <tr>
+        <th>TOTAL:</th>
+        <th></th>
+        <th></th>
+        <th>{{ totalPrice }}</th>
+      </tr>
+    </tfoot>
   </table>
 </ng-container>
